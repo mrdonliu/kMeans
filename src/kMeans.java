@@ -7,26 +7,25 @@ public class kMeans {
 	 * kmeans algorithm that returns clusters that have reached convergence.
 	 * 
 	 */
-	public static wheatClusters kmeansAlg( wheatClusters wc , ArrayList<wheat> dataset ){
+	public static void kmeansAlg( wheatClusters wc , ArrayList<wheat> dataset ){
 	
 		
 		while ( ! wc.isConverged() ){
-			prevCentroids = Arrays.copyOf(wc.getCentroids(), 3);
-			
-			
-			for ( wheat w : dataset ){
-				for ( int i = 0 ; i < 3 ; i++ ){
-					distances[i] = wheat.distance(w, prevCentroids[i] );
-				}
+			for( wheat w : dataset ){
 				
-				
-				
+				/**
+				 * takes the cluster of wc, then gets the index of the closest cluster to w
+				 * and accesses that cluster(arraylist). Then add w to that cluster. 
+				 */
+				wc.getClusters().get(wc.closestCluster(w)).add(w);
 			}
 			
-			
-			
-			
+			if ( !wc.resetCentroids() ){
+				wc.setConvergence(true);
+			}
+				
 		}
+		
 		
 	}
 	

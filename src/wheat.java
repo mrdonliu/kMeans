@@ -65,5 +65,11 @@ public class wheat {
 		
 	}
 	
+	public void print(){
+		for( Double d : attributes ){
+			System.out.print(d + " ");
+		}
+	}
+	
 
 }

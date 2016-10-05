@@ -44,8 +44,8 @@ public class wheatClusters {
 		int index = 0;
 		
 		for ( int i = 1 ; i < 3 ; i++ ){
-			if ( c[i] < smallestDistance ){
-				smallestDistance = c[i];
+			if ( distances[i] < smallestDistance ){
+				smallestDistance = distances[i];
 				index = i;
 			}
 		}
@@ -53,16 +53,30 @@ public class wheatClusters {
 		return index;
 	}
 	
-	
-	public void resetCentroids(){
-		wheat sumofWheats = new wheat(0,0,0,0,0,0,0);
-		for ( ArrayList <wheat> al : clusters ){
-			for( wheat w : al ){
-				sumofWheats = wheat.add(sumofWheats, w);
+	/**
+	 * resets centroids based on potentially new cluster sets. Returns true
+	 * if the centroids were changed, and false if they remained the same.
+	 */
+	public boolean resetCentroids(){
+		wheat sumofWheats;
+		wheat[] newCentroids = new wheat[3];
+		
+		for ( int i = 0 ; i < 3 ; i++ ){
+			sumofWheats = new wheat(0,0,0,0,0,0,0);
+			
+			for ( int x = 0 ; x < clusters.get(i).size() ; x++ ){
+				sumofWheats = wheat.add( sumofWheats , clusters.get(i).get(x) );
 				
 			}
 			
+			newCentroids[i] = wheat.division(sumofWheats , clusters.get(i).size() );
 		}
+		
+		for ( int z = 0 ; z < 3 ; z++ ){
+			if ( newCentroids[z] != centroids[z] ) return true;
+		}
+		
+		return false;
 			
 	}
 	
