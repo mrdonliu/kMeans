@@ -17,10 +17,17 @@ public class kMeans {
 				 * takes the cluster of wc, then gets the index of the closest cluster to w
 				 * and accesses that cluster(arraylist). Then add w to that cluster. 
 				 */
+				
+				System.out.println("The closest cluster is " + wc.closestCluster(w));
+				
 				wc.getClusters().get(wc.closestCluster(w)).add(w);
+				
+				System.out.println("added dataset to cluster " + wc.closestCluster(w));
 			}
 			
-			if ( !wc.resetCentroids() ){
+			boolean changed = wc.resetCentroids();
+			
+			if ( !changed ){
 				wc.setConvergence(true);
 			}
 				

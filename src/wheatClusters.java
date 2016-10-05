@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class wheatClusters {
 	//private ArrayList<wheat>[] clusters;
@@ -16,6 +17,10 @@ public class wheatClusters {
 		for ( int i = 0 ; i < 3 ; i++){
 			clusters.add(new ArrayList<wheat>() );
 		}
+		
+		System.out.println("The size of cluster 1 is " + clusters.get(0).size());
+		System.out.println("The size of cluster 2 is " + clusters.get(1).size());
+		System.out.println("The size of cluster 3 is " + clusters.get(2).size());
 		
 		convergence = false;
 		centroids = new wheat[3];
@@ -63,21 +68,45 @@ public class wheatClusters {
 		
 		for ( int i = 0 ; i < 3 ; i++ ){
 			sumofWheats = new wheat(0,0,0,0,0,0,0);
-			
-			for ( int x = 0 ; x < clusters.get(i).size() ; x++ ){
+			System.out.println("The size of cluster 1 is " + clusters.get(0).size());
+			System.out.println("The size of cluster 2 is " + clusters.get(1).size());
+			System.out.println("The size of cluster 3 is " + clusters.get(2).size());
+			for ( int x = 0 ; x < clusters.get(i).size() ; x++ ){ // error, values extend beyond expected!!!!!!!!
 				sumofWheats = wheat.add( sumofWheats , clusters.get(i).get(x) );
 				
 			}
 			
-			newCentroids[i] = wheat.division(sumofWheats , clusters.get(i).size() );
-		}
-		
-		for ( int z = 0 ; z < 3 ; z++ ){
-			if ( newCentroids[z] != centroids[z] ) return true;
-		}
-		
-		return false;
 			
+			newCentroids[i] = wheat.division(sumofWheats , clusters.get(i).size() );
+			System.out.print("centroid " + i + " " + "\n");
+			newCentroids[i].print();
+			
+			
+			
+		}
+		for( int i = 0 ; i < 3 ; i++ ){
+			clusters.get(i).clear();
+		}
+		
+		if ( wheat.equal(newCentroids[0], centroids[0]) && wheat.equal(newCentroids[1], centroids[1]) && wheat.equal(newCentroids[2], centroids[2])) {
+			System.out.println("THE SAME!!!!!!!!!!");
+			return false;
+		}
+		else{
+			
+
+			for ( int g = 0 ; g < 3 ; g++ ){
+				centroids[g] = newCentroids[g];
+			}
+			
+			return true;
+			
+		}
+		
+	
+		
+		
+		
 	}
 	
 	

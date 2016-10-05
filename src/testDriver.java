@@ -3,6 +3,7 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Random;
 
 public class testDriver {
 	
@@ -30,19 +31,22 @@ public class testDriver {
 				e.printStackTrace();
 			}
 			
-			System.out.println(dataset.size());
 			
-			
-			
-			
-			
-		} catch (FileNotFoundException e) {
+			} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
+		Random r = new Random();
+		//wheatClusters wc = new wheatClusters( dataset.get(r.nextInt(211)) , dataset.get(r.nextInt(211)) , dataset.get(r.nextInt(211)) );
+		System.out.println("intial dataset:");
+		dataset.get(23).print();
+		dataset.get(172).print();
+		dataset.get(135).print();
 		
-		
+		wheatClusters wc = new wheatClusters( dataset.get(23) , dataset.get(172) , dataset.get(135) );
+		kMeans.kmeansAlg(wc, dataset);
+		System.out.println("done");
 
 	}
 

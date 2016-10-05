@@ -53,11 +53,13 @@ public class wheat {
 		
 	}
 	
+
+	
 	public static wheat division( wheat w , int x ){
 		
 		double[] a = new double[7]; // new attributes
 		for( int i = 0 ; i < 7 ; i++ ){
-			a[i] = a[i] / x;
+			a[i] = w.getAttributes()[i] / x;
 		}
 		
 		return new wheat(a[0] , a[1] , a[2] , a[3] , a[4] , a[5] , a[6] );
@@ -66,9 +68,18 @@ public class wheat {
 	}
 	
 	public void print(){
+		System.out.print("This wheat's attributes are ");
 		for( Double d : attributes ){
 			System.out.print(d + " ");
 		}
+		System.out.println();
+	}
+	
+	
+	public static boolean equal( wheat w1 , wheat w2 ){
+		
+		if ( Arrays.equals(w1.getAttributes(), w2.getAttributes())) return true;
+		return false;
 	}
 	
 
