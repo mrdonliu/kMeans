@@ -38,15 +38,30 @@ public class testDriver {
 		}
 		
 		Random r = new Random();
-		//wheatClusters wc = new wheatClusters( dataset.get(r.nextInt(211)) , dataset.get(r.nextInt(211)) , dataset.get(r.nextInt(211)) );
+		int r1,r2,r3;
+		r1 = r.nextInt(211);
+		r2 = r.nextInt(211);
+		r3 = r.nextInt(211);
+		wheatClusters wc = new wheatClusters( dataset.get(r.nextInt(211)) , dataset.get(r.nextInt(211)) , dataset.get(r.nextInt(211)) );
 		System.out.println("intial dataset:");
-		dataset.get(23).print();
-		dataset.get(172).print();
-		dataset.get(135).print();
+
 		
-		wheatClusters wc = new wheatClusters( dataset.get(23) , dataset.get(172) , dataset.get(135) );
+		//wheatClusters wc = new wheatClusters( dataset.get(50) , dataset.get(34) , dataset.get(209) );
 		kMeans.kmeansAlg(wc, dataset);
+		dataset.get(r1).print();
+		dataset.get(r2).print();
+		dataset.get(r3).print();
 		System.out.println("done");
+		
+		
+		for ( int x = 0 ; x < 3 ; x++ ){
+			wc.getCentroids()[x].print();
+		}
+		
+		double iv = kMeans.iV(wc);
+		double ev = kMeans.eV(wc);
+		double ivOverEv = kMeans.iV(wc) / kMeans.eV(wc);
+		System.out.println(iv+" " + ev+ " " + ivOverEv);
 
 	}
 

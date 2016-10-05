@@ -68,7 +68,7 @@ public class wheat {
 	}
 	
 	public void print(){
-		System.out.print("This wheat's attributes are ");
+		//System.out.print("This wheat's attributes are ");
 		for( Double d : attributes ){
 			System.out.print(d + " ");
 		}

@@ -33,6 +33,46 @@ public class kMeans {
 				
 		}
 		
+
+		
+		
+	}
+	
+	
+	public static double iV( wheatClusters wc ){
+		
+		double sum = 0;
+		for ( int i = 0 ; i < 3 ; i++ ){
+			for ( int x = 0 ; x < wc.getClusters().get(i).size() ; x++ ){
+				sum += wheat.distance(wc.getClusters().get(i).get(x) , wc.getCentroids()[i] );
+				
+			}
+			
+		}
+		
+		return sum;
+		
+	}
+	
+	public static double eV( wheatClusters wc ){
+		double sum = 0;
+		
+		for ( int i = 0 ; i < wc.getClusters().get(2).size(); i++ ){
+			for ( int x = 0 ; x < 2 ; x++ ){
+				for ( int z = 0 ; z < wc.getClusters().get(x).size(); z++ ){
+					sum += wheat.distance( wc.getClusters().get(2).get(i), wc.getClusters().get(x).get(z) );
+				}
+				
+			}
+		}
+		
+		int numofElems = 0;
+		
+		for ( int b = 0 ; b < 3 ; b++ ){
+			numofElems += wc.getClusters().get(b).size();
+		}
+		
+		return sum / numofElems;
 		
 	}
 	

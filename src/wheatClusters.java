@@ -84,12 +84,8 @@ public class wheatClusters {
 			
 			
 		}
-		for( int i = 0 ; i < 3 ; i++ ){
-			clusters.get(i).clear();
-		}
 		
 		if ( wheat.equal(newCentroids[0], centroids[0]) && wheat.equal(newCentroids[1], centroids[1]) && wheat.equal(newCentroids[2], centroids[2])) {
-			System.out.println("THE SAME!!!!!!!!!!");
 			return false;
 		}
 		else{
@@ -97,6 +93,10 @@ public class wheatClusters {
 
 			for ( int g = 0 ; g < 3 ; g++ ){
 				centroids[g] = newCentroids[g];
+			}
+			
+			for( int i = 0 ; i < 3 ; i++ ){
+				clusters.get(i).clear();
 			}
 			
 			return true;
